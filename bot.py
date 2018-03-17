@@ -2,6 +2,7 @@ import discord
 import asyncio
 import urllib.request
 import json
+import os
 from math import *
 from random import *
 
@@ -19,6 +20,9 @@ tpt_snapshots = """**TPT snapshots**:
 *Linux 64-bit*: http://starcatcher.us/TPT/Download/Snapshot%20linux64.zip
 *Linux 32-bit*: http://starcatcher.us/TPT/Download/Snapshot%20linux32.zip
 *MacOS*: http://starcatcher.us/TPT/Download/Snapshot.dmg"""
+
+token = os.environ["TOKEN"]
+os = None
 
 async def teval(channel, x, t):
     await asyncio.sleep(t)
@@ -109,4 +113,4 @@ async def on_message(message):
         
 
 client.loop.create_task(motd_task())
-client.run(open("token.txt", "r").read())
+client.run(token)
